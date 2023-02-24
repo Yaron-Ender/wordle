@@ -1,0 +1,161 @@
+$time:0.5s;
+$color:#222;
+//Animation
+// @mixin run-animation($name) {
+//   animation: $name $time linear;
+// }
+// @mixin animation($name){
+//  @keyframes #{$name} {@content;}
+// };
+
+
+body {
+  text-align: center;
+  font-size: 1em;
+  font-family: verdana;
+  margin: 0;
+}
+h1 {
+  font-size: 1.2em;
+  padding: 20px 0;
+  border-bottom: 1px solid #eee;
+  margin: 0 0 30px 0;
+  color: #333;
+}
+.row {
+  text-align: center;
+  display: flex;
+  justify-content: center;
+
+& > div {
+  display: block;
+  width: 60px;
+  height: 60px;
+  border: 1px solid #bbb;
+  margin: 4px;
+  text-align: center;
+  line-height: 60px;
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: 2.5em;
+  &.filled{
+  animation:bounceLetter .1s ease-in-out forwards;
+
+  }
+  &.green {
+  border-color: #5ac85a;
+   animation:flip-green $time linear forwards;
+  }
+  &.grey {
+    border-color: #a1a1a1;
+   animation:flip-grey $time linear forwards;
+  }
+  &.yellow {
+    border-color: #e2cc68;
+   animation:flip-yellow $time linear forwards;
+  }
+
+$delay:0.2s;
+ @for $counter from 1 through 5{
+  &.colored:nth-child(n + #{$counter}){
+    animation-delay:($delay*$counter);
+  }
+ }
+
+  //for green boxes
+  @keyframes flip-green{
+      0% {
+   transform:rotateX(0);
+   background-color: #fff;
+   border-color:#333;
+  };
+  45%{
+    transform:rotateX(90deg);
+    background-color: #fff;
+   border-color:#333;
+  };
+  55%{
+    transform:rotateX(90deg);
+    background-color:#5ac85a;
+   border-color:#5ac85a;
+   color:#fff;
+  };
+  100%{
+    transform:rotateX(0);
+    background-color:#5ac85a;
+    border-color:#5ac85a;
+    color:#fff;
+    };
+  }
+  //for yellow boxes
+    @keyframes flip-yellow{
+      0% {
+   transform:rotateX(0);
+   background-color:#fff;;
+   border-color:#333;
+  };
+  45%{
+    transform:rotateX(90deg);
+    background-color:#fff;;
+   border-color:#333;
+  };
+  55%{
+    transform:rotateX(90deg);
+    background-color:#e2cc68;
+   border-color:#e2cc68;
+    color:#fff;
+  };
+  100%{
+  transform:rotateX(0);
+  background-color:#e2cc68;
+    border-color:#e2cc68;
+  color:#fff;   
+    };
+  }
+//for grey boxes
+ @keyframes flip-grey{
+      0% {
+   transform:rotateX(0);
+   background-color:#fff;
+   border-color:#333;
+  };
+  45%{
+    transform:rotateX(90deg);
+    background-color:#fff;
+   border-color:#333;
+  };
+  55%{
+  transform:rotateX(90deg);
+  background-color:#a1a1a1;
+  border-color:#a1a1a1;
+  color:#fff;
+  };
+  100%{
+  transform:rotateX(0);
+  background-color:#a1a1a1;
+  border-color:#a1a1a1;
+  color:#fff;
+    };
+  } 
+}
+}
+//keypad
+.keypad {
+  max-width:500px;
+  margin:20px auto;
+}
+.keypad > div {
+  margin: 5px;
+  width: 40px;
+  height: 50px;
+  background: #eee;
+  display: inline-block;
+  border-radius: 6px;
+   line-height: 50px;
+}
+//Animation
+@keyframes bounceLetter{
+  0%{transform:scale(1);border-color:#ddd;};
+  50%{transform:scale(1.2)};
+  100%{transform:scale(1);border-color:#333;};
+}
