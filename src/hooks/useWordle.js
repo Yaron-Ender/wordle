@@ -57,7 +57,6 @@ setCurrentGuess('')
 //update state for keypad
 formatedGuess.forEach((letterObj) => {
   setUsedKeys((prev) => {
-  console.log(prev   )
 if(letterObj.color==='green'){
   return { ...prev, [letterObj.key]: letterObj.color }; 
 }
