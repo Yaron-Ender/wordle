@@ -1,22 +1,16 @@
 import { useEffect, useState } from "react";
-import { solutionDatabase, keypadLetters } from "./data/db";
+import { solutionDatabase } from "./data/db";
 import Wordle from "./component/wordle";
-import Keypad from "./component/Keypad";
 function App() {
-
-  // const [error, setError] = useState(false);
-  // const [padding, setPadding] = useState(false);
-  const [solution, setSolution] = useState(null);
+const [solution, setSolution] = useState(null);
 useEffect(()=>{
 setSolution(solutionDatabase[Math.floor(Math.random() * solutionDatabase.length)]);
-
 },[setSolution])
 
   return (
   <div className="App">
   <h1>Wordle (Lingo)</h1>
   {solution && <Wordle solution={solution} />}
-  {keypadLetters&& <Keypad keypadLetters={keypadLetters} />}
   </div>
   );
 }

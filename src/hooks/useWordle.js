@@ -29,7 +29,7 @@ if(solutionArray.includes(l.key)&& l.color !=='green'){
  formatedGuess[i].color = "yellow";
  solutionArray[solutionArray.indexOf(l.key)] = null
 }
-  })
+})
   return formatedGuess
   };
 
@@ -54,6 +54,20 @@ setTurn((prevTurn)=>{
   return prevTurn +1
 })
 setCurrentGuess('')
+//update state for keypad
+formatedGuess.forEach((letterObj) => {
+  setUsedKeys((prev) => {
+  console.log(prev   )
+if(letterObj.color==='green'){
+  return { ...prev, [letterObj.key]: letterObj.color }; 
+}
+  if (prev[letterObj.key] !== "green" && prev[letterObj.key] !== "yellow") {
+    return { ...prev, [letterObj.key]: letterObj.color };
+  } else {
+    return prev;
+  }
+  });
+});
   };
   
   //handle keyup event and track current guess
@@ -94,5 +108,5 @@ setCurrentGuess('')
       }
     }
   };
-  return { turn, currentGuess, guesses, isCorrect, handleKeyup };
+  return { turn, currentGuess, guesses, isCorrect, handleKeyup,usedKeys };
 };

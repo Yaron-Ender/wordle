@@ -152,6 +152,19 @@ $delay:0.2s;
   display: inline-block;
   border-radius: 6px;
    line-height: 50px;
+  &.green{
+    background-color: #5ac85a;
+    color: #fff;
+  }
+  &.yellow{
+    background-color:#e2cc68;
+    color: #fff;
+  }
+  &.grey{
+    background-color: #a1a1a1;
+    color: #fff;
+  }
+
 }
 //Animation
 @keyframes bounceLetter{
